@@ -1,3 +1,22 @@
+
+------ THIS GAME at https://github.com/tagwato/flappybird4msx
+
+FLAPPY BIRD for MSX with Music - Versão 1.W.
+by Pedro Tagwato.
+
+Binary files (ROM and DSK) are available and can run directly 
+on any MSX emulator.
+
+This program and other related files are licensed unde terms of GPL
+(GNU General Public License). Changes, suggestions and improvement
+are welcomed.
+
+The code concerning the music player of "ARKOS PLAYER 2" is
+submitted to MIT license (https://choosealicense.com/licenses/mit/).
+
+
+------ ORIGINAL GAME at https://github.com/plainspooky/flappybird4msx
+
 FLAPPY BIRD for MSX - Versão 1.D.
 (C)2014-2016 Giovanni Nunes <giovanni.nunes@gmail.com>
 
