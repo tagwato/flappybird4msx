@@ -8,13 +8,13 @@
  
 MusicSpace:
     ;This is the music, and its config file. 
-    include "incl_myflappybird1.asm"           ; <<<---- change music here
-    ;;include "incl_myflappybird1_playerconfig.asm" ;Optional. 
+    include "incl_FenyxKell_Bobline (music1).asm"    ; <<<---- change music here
+    ;;include "incl_FenyxKell_Bobline (music1)_playerconfig.asm" ;Optional. 
 
 SoundEffectsSpace:  
     ;This is the sfxs (sound effects), and its config file.   
-    include "incl_MyRing6Sound.asm"          ; <<<---- change sound effect here
-    ;;include "incl_MyRing6Sound_playerconfig.asm"  ;Optional. 
+    include "incl_MyRing1Sound.asm"                ; <<<---- change sound effect here
+    ;;include "incl_MyRing1Sound_playerconfig.asm"  ;Optional. 
  
     ;What hardware? Uncomment the right one. 
     ;PLY_AKG_HARDWARE_CPC = 1 
@@ -42,6 +42,28 @@ SoundEffectsSpace:
  
     ;This is the player. 
     include "players/playerAkg/sources/PlayerAkg.asm"
+
+
+;**** TGW - My routine to dynamically change the current speed of the song ****
+;     This can be useful if we need to run a 50Hz song in machines with 60hz VDP or vice versa.
+;     Notice: using this will override any 'speed track' <> 0 hardcoded in the song (Link section of Arkos) 
+ChangeCurrentSpeed:  ; before calling this routine, put the song speed in z80 register 'A'
+    ; (se a musica foi configurada como 50hz ao ser gerada, entao, para rodar em machine com VDP 60hz 
+    ; tem que diminuir a velocidade aumentando 1 ponto, da default 6 para 7;   e vice-versa )
+	; Nossas mudancas abaixo decorrem do que consta no PlayerAkg.asm, ali atras incluido...
+        IFNDEF PLY_AKG_Rom   
+	; nesse caso, o label PLY_AKG_CurrentSpeed resultou definido no PlayerAkg.asm como: 
+	;;PLY_AKG_CurrentSpeed: ld a,0    ; isso eh o que consta no PlayerAkg.asm nesse caso
+         ld  (PLY_AKG_CurrentSpeed + 1), a  ; esta eh a mudanca que estamos fazendo ;(a=N=the speed we want)
+	; ou seja, acima mudamos para a=N o byte 0 que constava NAQUELE endereco+1 do label
+	;;PLY_AKG_CurrentSpeed: ld a,N    ; <<-- 'enganamos' o codigo la atras para ficar assim :)
+        ELSE                 
+	; nesse caso, o PLY_AKG_CurrentSpeed foi definido no PlayerAkg.asm como um byte no buffer
+	; entao, simplesmente carregamos la o valor que queremos usar:
+         ld (PLY_AKG_CurrentSpeed), a   ;(force a=N=the speed we want)
+        ENDIF
+         ret
+
 
 ;; EXECUTAR os comandos abaixo para poder gerar um include do Arkos compativel com o PASMO:
 ;; 1)compilar este source-code com o RASM

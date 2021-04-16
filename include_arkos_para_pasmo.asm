@@ -1,5 +1,5 @@
 MUSICSPACE
-MYFLAPPYBIRD1_START
+UNTITLED_START
 PLY_AKG_OFFSET2B
 PLY_AKG_OFFSET1B
 PLY_AKG_OPCODE_OR_A
@@ -11,29 +11,34 @@ PLY_AKG_BITFORSOUND
 PLY_AKG_SOUNDEFFECTDATA_OFFSETINVERTEDVOLUME db 50
 PLY_AKG_SOUNDEFFECTDATA_OFFSETCURRENTSTEP db 48
 PLY_AKG_BITFORNOISE equ $+1
-PLY_AKG_SOUNDEFFECTDATA_OFFSETSPEED dw MYFLAPPYBIRD1_ARPEGGIOTABLE
-    dw MYFLAPPYBIRD1_ARPEGGIOTABLE
+PLY_AKG_SOUNDEFFECTDATA_OFFSETSPEED dw UNTITLED_ARPEGGIOTABLE
+    dw UNTITLED_ARPEGGIOTABLE
 PLY_AKG_OPCODE_ADD_HL_BC_LSB equ $+1
-    dw MYFLAPPYBIRD1_ARPEGGIOTABLE
-    dw MYFLAPPYBIRD1_EFFECTBLOCKTABLE
-    dw MYFLAPPYBIRD1_SUBSONG0_START
-MYFLAPPYBIRD1_ARPEGGIOTABLE
-MYFLAPPYBIRD1_PITCHTABLE
-MYFLAPPYBIRD1_INSTRUMENTTABLE dw MYFLAPPYBIRD1_EMPTYINSTRUMENT
-    dw MYFLAPPYBIRD1_INSTRUMENT1
-    dw MYFLAPPYBIRD1_INSTRUMENT2
-    dw MYFLAPPYBIRD1_INSTRUMENT3
-    dw MYFLAPPYBIRD1_INSTRUMENT4
-    dw MYFLAPPYBIRD1_INSTRUMENT5
-    dw MYFLAPPYBIRD1_INSTRUMENT6
-MYFLAPPYBIRD1_EMPTYINSTRUMENT db 0
-MYFLAPPYBIRD1_EMPTYINSTRUMENT_LOOP db 0
+    dw UNTITLED_ARPEGGIOTABLE
+    dw UNTITLED_EFFECTBLOCKTABLE
+    dw UNTITLED_SUBSONG0_START
+UNTITLED_ARPEGGIOTABLE
+UNTITLED_PITCHTABLE
+UNTITLED_INSTRUMENTTABLE dw UNTITLED_EMPTYINSTRUMENT
+    dw UNTITLED_INSTRUMENT1
+    dw UNTITLED_INSTRUMENT2
+    dw UNTITLED_INSTRUMENT3
+    dw UNTITLED_INSTRUMENT4
+    dw UNTITLED_INSTRUMENT5
+    dw UNTITLED_INSTRUMENT6
+    dw UNTITLED_INSTRUMENT7
+    dw UNTITLED_INSTRUMENT8
+    dw UNTITLED_INSTRUMENT9
+PLY_AKG_OPCODE_INC_HL equ $+1
+    dw UNTITLED_INSTRUMENT10
+UNTITLED_EMPTYINSTRUMENT db 0
+UNTITLED_EMPTYINSTRUMENT_LOOP db 0
     db 6
-MYFLAPPYBIRD1_INSTRUMENT1 db 1
+UNTITLED_INSTRUMENT1 db 1
     db 105
     db 65
     db 244
-PLY_AKG_OPCODE_INC_HL db 121
+PLY_AKG_OPCODE_DEC_HL db 121
     db 64
     db 244
     db 113
@@ -41,7 +46,7 @@ PLY_AKG_OPCODE_INC_HL db 121
     db 244
     db 255
     db 255
-PLY_AKG_OPCODE_DEC_HL db 105
+    db 105
     db 64
     db 244
     db 97
@@ -56,7 +61,7 @@ PLY_AKG_OPCODE_DEC_HL db 105
     db 64
     db 244
     db 73
-    db 64
+PLY_AKG_OPCODE_SBC_HL_BC_LSB db 64
     db 244
     db 65
     db 96
@@ -64,7 +69,7 @@ PLY_AKG_OPCODE_DEC_HL db 105
     db 255
     db 255
     db 57
-PLY_AKG_OPCODE_SBC_HL_BC_LSB db 64
+    db 64
     db 244
     db 49
     db 64
@@ -94,7 +99,7 @@ PLY_AKG_OPCODE_SBC_HL_BC_LSB db 64
     db 255
     db 255
     db 6
-MYFLAPPYBIRD1_INSTRUMENT2 db 1
+UNTITLED_INSTRUMENT2 db 1
     db 121
     db 70
     db 12
@@ -127,7 +132,7 @@ MYFLAPPYBIRD1_INSTRUMENT2 db 1
     db 1
     db 177
     db 6
-MYFLAPPYBIRD1_INSTRUMENT3 db 1
+UNTITLED_INSTRUMENT3 db 1
     db 240
     db 4
     db 121
@@ -138,9 +143,72 @@ MYFLAPPYBIRD1_INSTRUMENT3 db 1
     db 8
     db 249
     db 6
-MYFLAPPYBIRD1_INSTRUMENT4 db 1
+UNTITLED_INSTRUMENT4 db 1
+UNTITLED_INSTRUMENT4_LOOP db 34
+    db 131
+    db 7
+    dw UNTITLED_INSTRUMENT4_LOOP
+UNTITLED_INSTRUMENT5 db 1
     db 249
     db 121
+    db 32
+    db 255
+    db 255
+    db 241
+    db 113
+    db 32
+    db 1
+    db 0
+    db 233
+    db 105
+    db 32
+    db 255
+    db 255
+    db 225
+    db 97
+    db 32
+    db 1
+    db 0
+    db 217
+    db 89
+    db 32
+    db 255
+    db 255
+    db 209
+    db 81
+    db 32
+    db 1
+    db 0
+    db 201
+    db 73
+    db 32
+    db 255
+    db 255
+    db 193
+    db 57
+    db 32
+    db 1
+    db 0
+PLY_AKG_OPCODE_JP db 177
+    db 41
+    db 32
+PLY_AKG_OPCODE_ADD_A_IMMEDIATE db 255
+    db 255
+    db 161
+    db 25
+    db 32
+    db 1
+    db 0
+    db 145
+    db 9
+    db 32
+    db 255
+    db 255
+    db 0
+    db 6
+UNTITLED_INSTRUMENT6 db 1
+    db 249
+PLY_AKG_OPCODE_SUB_IMMEDIATE db 121
     db 64
     db 3
     db 113
@@ -163,7 +231,7 @@ MYFLAPPYBIRD1_INSTRUMENT4 db 1
     db 217
     db 81
     db 64
-    db 3
+PLY_AKG_OPCODE_SBC_HL_BC_MSB db 3
     db 81
     db 64
     db 7
@@ -181,7 +249,7 @@ MYFLAPPYBIRD1_INSTRUMENT4 db 1
     db 57
     db 64
     db 7
-    db 177
+PLY_AKG_OPCODE_SCF db 177
     db 49
     db 64
     db 3
@@ -193,10 +261,10 @@ MYFLAPPYBIRD1_INSTRUMENT4 db 1
     db 64
     db 3
     db 33
-PLY_AKG_OPCODE_JP db 64
+    db 64
     db 7
     db 153
-PLY_AKG_OPCODE_ADD_A_IMMEDIATE db 25
+    db 25
     db 64
     db 3
     db 17
@@ -207,12 +275,56 @@ PLY_AKG_OPCODE_ADD_A_IMMEDIATE db 25
     db 64
     db 3
     db 6
-MYFLAPPYBIRD1_INSTRUMENT5 db 1
+UNTITLED_INSTRUMENT7 db 1
+    db 249
+    db 105
+    db 64
+    db 3
+    db 89
+    db 64
+    db 7
+    db 81
+    db 64
+    db 3
+    db 201
+    db 65
+    db 64
+    db 3
+    db 241
+    db 97
+    db 64
+    db 3
+    db 81
+    db 64
+    db 7
+    db 73
+    db 64
+    db 3
+    db 193
+    db 57
+    db 64
+    db 3
+    db 233
+    db 89
+    db 64
+    db 3
+    db 73
+    db 64
+    db 7
+    db 65
+    db 64
+    db 3
+    db 185
+    db 49
+    db 64
+    db 3
+    db 6
+UNTITLED_INSTRUMENT8 db 1
     db 232
     db 4
     db 121
     db 64
-PLY_AKG_OPCODE_SUB_IMMEDIATE db 11
+    db 11
     db 113
     db 64
     db 9
@@ -222,7 +334,78 @@ PLY_AKG_OPCODE_SUB_IMMEDIATE db 11
     db 233
     db 225
     db 6
-MYFLAPPYBIRD1_INSTRUMENT6 db 1
+UNTITLED_INSTRUMENT9 db 1
+    db 121
+    db 64
+    db 12
+    db 121
+    db 32
+    db 255
+    db 255
+    db 121
+    db 32
+    db 255
+    db 255
+    db 113
+    db 32
+    db 255
+    db 255
+    db 241
+    db 241
+    db 241
+    db 233
+    db 233
+    db 233
+    db 105
+    db 32
+    db 255
+    db 255
+    db 97
+    db 32
+    db 255
+    db 255
+    db 97
+    db 32
+    db 255
+    db 255
+    db 225
+    db 225
+    db 217
+    db 209
+    db 209
+    db 209
+    db 73
+    db 32
+    db 255
+    db 255
+    db 73
+    db 32
+    db 255
+    db 255
+    db 73
+    db 32
+    db 255
+    db 255
+UNTITLED_INSTRUMENT9_LOOP db 193
+    db 193
+    db 193
+    db 193
+    db 193
+    db 65
+    db 32
+    db 255
+    db 255
+    db 65
+    db 32
+    db 255
+    db 255
+    db 65
+    db 32
+    db 255
+    db 255
+    db 7
+    dw UNTITLED_INSTRUMENT9_LOOP
+UNTITLED_INSTRUMENT10 db 1
     db 121
     db 64
     db 7
@@ -235,7 +418,7 @@ MYFLAPPYBIRD1_INSTRUMENT6 db 1
     db 113
     db 64
     db 7
-PLY_AKG_OPCODE_SBC_HL_BC_MSB db 105
+    db 105
     db 64
     db 12
     db 105
@@ -253,7 +436,7 @@ PLY_AKG_OPCODE_SBC_HL_BC_MSB db 105
     db 89
     db 64
     db 7
-PLY_AKG_OPCODE_SCF db 81
+    db 81
     db 64
     db 12
     db 81
@@ -311,379 +494,909 @@ PLY_AKG_OPCODE_SCF db 81
     db 64
     db 12
     db 6
-MYFLAPPYBIRD1_EFFECTBLOCKTABLE dw MYFLAPPYBIRD1_EFFECTBLOCK_P4P0
-    dw MYFLAPPYBIRD1_EFFECTBLOCK_P4P3
-    dw MYFLAPPYBIRD1_EFFECTBLOCK_P4P2
-    dw MYFLAPPYBIRD1_EFFECTBLOCK_P4P4
-    dw MYFLAPPYBIRD1_EFFECTBLOCK_P4P1
-MYFLAPPYBIRD1_EFFECTBLOCK_P4P0 db 4
+UNTITLED_EFFECTBLOCKTABLE dw UNTITLED_EFFECTBLOCK_P4P0
+    dw UNTITLED_EFFECTBLOCK_P4P3
+    dw UNTITLED_EFFECTBLOCK_P4P2
+    dw UNTITLED_EFFECTBLOCK_P4P4
+    dw UNTITLED_EFFECTBLOCK_P4P1
+    dw UNTITLED_EFFECTBLOCK_P20P128P0
+    dw UNTITLED_EFFECTBLOCK_P18P0P2
+    dw UNTITLED_EFFECTBLOCK_P4P5
+    dw UNTITLED_EFFECTBLOCK_P4P6
+    dw UNTITLED_EFFECTBLOCK_P4P7
+    dw UNTITLED_EFFECTBLOCK_P4P8
+    dw UNTITLED_EFFECTBLOCK_P20P128P1
+    dw UNTITLED_EFFECTBLOCK_P18P0P1
+    dw UNTITLED_EFFECTBLOCK_P20P0P2
+UNTITLED_EFFECTBLOCK_P4P0 db 4
     db 0
-MYFLAPPYBIRD1_EFFECTBLOCK_P4P1 db 4
+UNTITLED_EFFECTBLOCK_P4P1 db 4
     db 1
-MYFLAPPYBIRD1_EFFECTBLOCK_P4P2 db 4
+UNTITLED_EFFECTBLOCK_P4P2 db 4
     db 2
-MYFLAPPYBIRD1_EFFECTBLOCK_P4P3 db 4
+UNTITLED_EFFECTBLOCK_P4P3 db 4
     db 3
-MYFLAPPYBIRD1_EFFECTBLOCK_P4P4 db 4
+UNTITLED_EFFECTBLOCK_P4P4 db 4
     db 4
-MYFLAPPYBIRD1_SUBSONG0_START db 2
-    db 0
-    db 1
-    db 0
+UNTITLED_EFFECTBLOCK_P4P5 db 4
+    db 5
+UNTITLED_EFFECTBLOCK_P4P6 db 4
+    db 6
+UNTITLED_EFFECTBLOCK_P4P7 db 4
+    db 7
+UNTITLED_EFFECTBLOCK_P4P8 db 4
     db 8
+UNTITLED_EFFECTBLOCK_P20P128P0 db 20
+    db 128
+    db 0
+UNTITLED_EFFECTBLOCK_P20P128P1 db 20
+    db 128
+    db 1
+UNTITLED_EFFECTBLOCK_P18P0P1 db 18
+    db 0
+    db 1
+UNTITLED_EFFECTBLOCK_P18P0P2 db 18
+    db 0
+    db 2
+UNTITLED_EFFECTBLOCK_P20P0P2 db 20
+    db 0
+    db 2
+UNTITLED_SUBSONG0_START db 2
+    db 0
+    db 1
+    db 2
+    db 26
     db 6
+    db 24
+UNTITLED_SUBSONG0_LINKER dw UNTITLED_SUBSONG0_TRACK12
+    dw UNTITLED_SUBSONG0_TRACK1
+    dw UNTITLED_SUBSONG0_TRACK13
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK1
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+UNTITLED_SUBSONG0_LINKER_LOOP dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK9
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK10
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK4
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK5
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK11
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK6
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK7
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK7
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK14
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK15
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK15
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK3
+    dw UNTITLED_SUBSONG0_TRACK7
+    dw UNTITLED_SUBSONG0_TRACK8
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK15
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK1
+    dw UNTITLED_SUBSONG0_TRACK3
+    dw UNTITLED_SUBSONG0_TRACK6
+    dw UNTITLED_SUBSONG0_TRACK8
+    dw UNTITLED_SUBSONG0_LINKERBLOCK0
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK15
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK2
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK9
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK3
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK10
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK3
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK4
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK3
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK5
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK3
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK11
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK3
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK6
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK3
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK7
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK3
+    dw UNTITLED_SUBSONG0_TRACK3
+    dw UNTITLED_SUBSONG0_TRACK7
+    dw UNTITLED_SUBSONG0_TRACK8
+    dw UNTITLED_SUBSONG0_LINKERBLOCK3
+    dw UNTITLED_SUBSONG0_TRACK0
+    dw UNTITLED_SUBSONG0_TRACK14
+    dw UNTITLED_SUBSONG0_TRACK2
+    dw UNTITLED_SUBSONG0_LINKERBLOCK4
+    dw UNTITLED_SUBSONG0_TRACK3
+    dw UNTITLED_SUBSONG0_TRACK15
+    dw UNTITLED_SUBSONG0_TRACK8
+    dw UNTITLED_SUBSONG0_LINKERBLOCK4
+    db 0
+    db 0
+    dw UNTITLED_SUBSONG0_LINKER_LOOP
+UNTITLED_SUBSONG0_LINKERBLOCK0 db 24
+    db 0
+    db 0
+    db 0
+    dw UNTITLED_SUBSONG0_SPEEDTRACK0
+    dw UNTITLED_SUBSONG0_EVENTTRACK0
+UNTITLED_SUBSONG0_LINKERBLOCK1 db 24
+    db 251
+    db 251
+    db 7
+    dw UNTITLED_SUBSONG0_SPEEDTRACK0
+    dw UNTITLED_SUBSONG0_EVENTTRACK0
+UNTITLED_SUBSONG0_LINKERBLOCK2 db 24
+    db 7
+    db 251
+    db 251
+    dw UNTITLED_SUBSONG0_SPEEDTRACK0
+    dw UNTITLED_SUBSONG0_EVENTTRACK0
+UNTITLED_SUBSONG0_LINKERBLOCK3 db 24
+    db 251
+    db 251
+    db 251
+    dw UNTITLED_SUBSONG0_SPEEDTRACK0
+    dw UNTITLED_SUBSONG0_EVENTTRACK0
+UNTITLED_SUBSONG0_LINKERBLOCK4 db 24
+    db 249
+    db 249
+    db 249
+    dw UNTITLED_SUBSONG0_SPEEDTRACK0
+    dw UNTITLED_SUBSONG0_EVENTTRACK0
+UNTITLED_SUBSONG0_TRACK0 db 221
+    db 10
+    db 0
+    db 60
+    db 240
+    db 1
+    db 1
+    db 233
+    db 10
+    db 3
+    db 60
+    db 245
+    db 1
+    db 1
+    db 221
+    db 10
+    db 4
+    db 60
+    db 238
+    db 1
+    db 1
+    db 233
+    db 10
+    db 3
+    db 60
+    db 240
+    db 1
+    db 1
+    db 228
+    db 6
+    db 4
+    db 60
+    db 236
+    db 1
+    db 1
+    db 240
+    db 6
+    db 3
+    db 60
+    db 238
+    db 1
+    db 1
+    db 228
+    db 6
+    db 4
+    db 60
+    db 243
+    db 1
+    db 1
+    db 240
+    db 6
+    db 3
+    db 60
+    db 176
+    db 1
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK1 db 128
+    db 0
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK2 db 199
+    db 3
+    db 0
+    db 60
+    db 221
+    db 10
+    db 2
+    db 197
+    db 2
+    db 0
+    db 60
+    db 221
+    db 10
+    db 2
+    db 199
+    db 3
+    db 0
+    db 60
+    db 221
+    db 10
+    db 2
+    db 255
+    db 19
+    db 8
+    db 0
+    db 60
+    db 228
+    db 6
+    db 2
+    db 199
+    db 3
+    db 0
+    db 60
+    db 133
+    db 2
+    db 5
+    db 60
+    db 228
+    db 6
+    db 2
+    db 199
+    db 3
+    db 0
+    db 60
+    db 228
+    db 6
+    db 2
+    db 255
+    db 19
+    db 8
+    db 0
+    db 60
+    db 197
+    db 2
+    db 2
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK3 db 221
+    db 10
+    db 0
+    db 60
+    db 240
+    db 1
+    db 1
+    db 233
+    db 10
+    db 3
+    db 60
+    db 245
+    db 1
+    db 1
+    db 221
+    db 10
+    db 4
+    db 60
+    db 238
+    db 1
+    db 1
+    db 233
+    db 10
+    db 3
+    db 60
+    db 240
+    db 1
+    db 1
+    db 228
+    db 6
+    db 4
+    db 60
+    db 236
+    db 1
+    db 1
+    db 240
+    db 6
+    db 3
+    db 60
+    db 238
+    db 1
+    db 1
+    db 228
+    db 6
+    db 4
+    db 60
+    db 243
+    db 1
+    db 1
+    db 240
+    db 6
+    db 3
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK4 db 133
+    db 4
+    db 8
+    db 10
+    db 12
+    db 15
+    db 16
     db 17
-MYFLAPPYBIRD1_SUBSONG0_LINKER
-MYFLAPPYBIRD1_SUBSONG0_LINKER_LOOP dw MYFLAPPYBIRD1_SUBSONG0_TRACK3
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK1
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK4
-    dw MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK0
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK0
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK1
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK2
-    dw MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK1
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK3
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK1
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK4
-    dw MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK0
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK0
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK1
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK2
-    dw MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK2
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK0
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK1
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK2
-    dw MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK3
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK0
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK1
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK2
-    dw MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK3
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK3
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK1
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK4
-    dw MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK3
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK0
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK1
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK2
-    dw MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK4
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK3
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK1
-    dw MYFLAPPYBIRD1_SUBSONG0_TRACK4
-    dw MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK4
-    db 0
-    db 0
-    dw MYFLAPPYBIRD1_SUBSONG0_LINKER
-MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK0 db 24
-    db 0
-    db 0
-    db 0
-    dw MYFLAPPYBIRD1_SUBSONG0_SPEEDTRACK0
-    dw MYFLAPPYBIRD1_SUBSONG0_EVENTTRACK0
-MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK1 db 24
-    db 251
-    db 251
-    db 7
-    dw MYFLAPPYBIRD1_SUBSONG0_SPEEDTRACK0
-    dw MYFLAPPYBIRD1_SUBSONG0_EVENTTRACK0
-MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK2 db 24
-    db 7
-    db 251
-    db 251
-    dw MYFLAPPYBIRD1_SUBSONG0_SPEEDTRACK0
-    dw MYFLAPPYBIRD1_SUBSONG0_EVENTTRACK0
-MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK3 db 24
-    db 251
-    db 251
-    db 251
-    dw MYFLAPPYBIRD1_SUBSONG0_SPEEDTRACK0
-    dw MYFLAPPYBIRD1_SUBSONG0_EVENTTRACK0
-MYFLAPPYBIRD1_SUBSONG0_LINKERBLOCK4 db 24
-    db 249
-    db 249
-    db 249
-    dw MYFLAPPYBIRD1_SUBSONG0_SPEEDTRACK0
-    dw MYFLAPPYBIRD1_SUBSONG0_EVENTTRACK0
-MYFLAPPYBIRD1_SUBSONG0_TRACK0 db 228
-    db 6
-    db 0
     db 60
-    db 247
-    db 1
-    db 1
-    db 240
-    db 6
-    db 3
-    db 60
-    db 255
-    db 77
-    db 1
-    db 1
-    db 228
-    db 6
-    db 4
-    db 60
-    db 245
-    db 1
-    db 1
-    db 240
-    db 6
-    db 3
-    db 60
-    db 247
-    db 1
-    db 1
-    db 235
-    db 4
-    db 4
-    db 60
-    db 243
-    db 1
-    db 1
-    db 247
-    db 4
-    db 3
-    db 60
-    db 245
-    db 1
-    db 1
-    db 235
-    db 4
-    db 4
-    db 60
-    db 255
-    db 75
-    db 1
-    db 1
-    db 247
-    db 4
-    db 3
-    db 60
-    db 183
-    db 1
-    db 61
-    db 127
-MYFLAPPYBIRD1_SUBSONG0_TRACK1 db 61
-    db 127
-MYFLAPPYBIRD1_SUBSONG0_TRACK2 db 206
-    db 3
-    db 0
-    db 60
-    db 228
-    db 6
-    db 2
-    db 204
-    db 2
-    db 0
-    db 60
-    db 228
-    db 6
-    db 2
-    db 206
-    db 3
-    db 0
-    db 60
-    db 228
-    db 6
-    db 2
-    db 194
+    db 209
     db 5
     db 0
     db 60
-    db 235
-    db 4
-    db 2
-    db 206
+    db 69
     db 3
+    db 84
     db 0
     db 60
-    db 140
-    db 2
-    db 12
-    db 60
-    db 235
-    db 4
-    db 2
-    db 206
+    db 72
     db 3
+    db 79
     db 0
     db 60
-    db 235
-    db 4
-    db 2
-    db 194
-    db 5
-    db 0
-    db 60
-    db 204
-    db 2
-    db 2
-    db 61
-    db 127
-MYFLAPPYBIRD1_SUBSONG0_TRACK3 db 228
-    db 6
-    db 0
-    db 60
-    db 247
-    db 1
-    db 1
-    db 240
-    db 6
+    db 67
     db 3
-    db 60
-    db 255
-    db 77
-    db 1
-    db 1
-    db 228
-    db 6
-    db 4
-    db 60
-    db 245
-    db 1
-    db 1
-    db 240
-    db 6
-    db 3
-    db 60
-    db 247
-    db 1
-    db 1
-    db 235
-    db 4
-    db 4
-    db 60
-    db 243
-    db 1
-    db 1
-    db 247
-    db 4
-    db 3
-    db 60
-    db 245
-    db 1
-    db 1
-    db 235
-    db 4
-    db 4
-    db 60
-    db 255
-    db 75
-    db 1
-    db 1
-    db 247
-    db 4
-    db 3
-    db 61
-    db 127
-MYFLAPPYBIRD1_SUBSONG0_TRACK4 db 206
-    db 3
+    db 81
     db 0
+    db 216
+    db 9
+    db 4
     db 60
-    db 228
-    db 6
+    db 88
     db 2
-    db 204
-    db 2
-    db 0
-    db 60
-    db 228
-    db 6
-    db 2
-    db 206
-    db 3
-    db 0
-    db 60
-    db 228
-    db 6
-    db 2
-    db 194
-    db 5
-    db 0
-    db 60
-    db 235
-    db 4
-    db 2
-    db 206
-    db 3
-    db 0
-    db 60
-    db 140
-    db 2
-    db 12
-    db 60
-    db 235
-    db 4
-    db 2
-    db 206
-    db 3
-    db 0
-    db 60
-    db 235
-    db 4
-    db 2
-    db 194
-    db 5
-    db 0
-    db 61
-    db 127
-MYFLAPPYBIRD1_SUBSONG0_SPEEDTRACK0 db 255
-MYFLAPPYBIRD1_SUBSONG0_EVENTTRACK0 db 255
-SOUNDEFFECTSSPACE
-MYRING6SOUND_SOUNDEFFECTS dw MYRING6SOUND_SOUNDEFFECTS_SOUND1
-MYRING6SOUND_SOUNDEFFECTS_SOUND1 db 0
-    db 57
-    db 43
-    db 0
-    db 53
-    db 42
-    db 0
-    db 49
-    db 43
-    db 0
-    db 45
-    db 43
-    db 0
     db 41
-    db 43
+    db 108
+    db 4
+    db 110
     db 0
-    db 57
-    db 67
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK5 db 240
+    db 9
     db 0
+    db 60
+    db 124
+    db 6
     db 53
-    db 66
+    db 62
+    db 48
+    db 62
+    db 46
+    db 60
+    db 108
+    db 1
+    db 110
     db 0
-    db 49
-    db 67
+    db 60
+    db 124
+    db 12
+    db 48
+    db 62
+    db 157
+    db 5
+    db 145
+    db 4
+    db 160
+    db 5
+    db 34
+    db 133
+    db 4
+    db 128
     db 0
-    db 53
-    db 66
-    db 0
-    db 41
-    db 67
-    db 0
-    db 57
-    db 30
-    db 0
-    db 53
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK6 db 164
+    db 5
+    db 60
+    db 24
+    db 17
+    db 60
+    db 24
+    db 60
+    db 133
+    db 4
+    db 145
+    db 5
     db 29
+    db 60
+    db 32
+    db 27
+    db 60
+    db 143
+    db 4
+    db 150
+    db 5
+    db 60
+    db 23
+    db 24
+    db 60
+    db 167
+    db 9
+    db 62
+    db 124
+    db 13
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK7 db 228
+    db 9
+    db 0
+    db 62
+    db 133
+    db 4
+    db 60
+    db 169
+    db 7
+    db 145
+    db 4
+    db 60
+    db 172
+    db 9
+    db 60
+    db 124
+    db 5
+    db 43
+    db 62
+    db 128
+    db 0
+    db 162
+    db 9
+    db 62
+    db 131
+    db 4
+    db 60
+    db 128
+    db 0
+    db 167
+    db 9
+    db 124
+    db 5
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK8 db 199
+    db 3
+    db 0
+    db 60
+    db 221
+    db 10
+    db 2
+    db 197
+    db 2
+    db 0
+    db 60
+    db 221
+    db 10
+    db 2
+    db 199
+    db 3
+    db 0
+    db 60
+    db 221
+    db 10
+    db 2
+    db 255
+    db 19
+    db 8
+    db 0
+    db 60
+    db 228
+    db 6
+    db 2
+    db 199
+    db 3
+    db 0
+    db 60
+    db 133
+    db 2
+    db 5
+    db 60
+    db 228
+    db 6
+    db 2
+    db 199
+    db 3
+    db 0
+    db 60
+    db 228
+    db 6
+    db 2
+    db 255
+    db 19
+    db 8
+    db 0
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK9 db 133
+    db 4
+    db 8
+    db 10
+    db 12
+    db 15
+    db 16
+    db 17
+    db 62
+    db 5
+    db 62
+    db 15
+    db 62
+    db 3
+    db 62
+    db 12
+    db 62
+    db 0
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK10 db 133
+    db 4
+    db 8
+    db 10
+    db 12
+    db 15
+    db 16
+    db 17
+    db 60
+    db 209
+    db 5
+    db 0
+    db 60
+    db 69
+    db 3
+    db 84
+    db 0
+    db 60
+    db 72
+    db 3
+    db 79
+    db 0
+    db 60
+    db 67
+    db 3
+    db 81
+    db 0
+    db 140
+    db 4
+    db 60
+    db 124
+    db 11
+    db 0
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK11 db 240
+    db 9
+    db 0
+    db 60
+    db 124
+    db 6
+    db 53
+    db 62
+    db 48
+    db 62
+    db 46
+    db 60
+    db 108
+    db 1
+    db 110
+    db 0
+    db 60
+    db 124
+    db 5
+    db 41
+    db 62
+    db 145
+    db 4
+    db 60
+    db 128
+    db 0
+    db 133
+    db 4
+    db 60
+    db 128
+    db 0
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK12 db 221
+    db 10
+    db 10
+    db 60
+    db 240
+    db 1
+    db 9
+    db 169
+    db 10
+    db 60
+    db 245
+    db 1
+    db 8
+    db 157
+    db 10
+    db 60
+    db 238
+    db 1
+    db 7
+    db 233
+    db 10
+    db 3
+    db 60
+    db 240
+    db 1
+    db 1
+    db 228
+    db 6
+    db 2
+    db 60
+    db 236
+    db 1
+    db 7
+    db 240
+    db 6
+    db 3
+    db 60
+    db 238
+    db 1
+    db 1
+    db 228
+    db 6
+    db 2
+    db 60
+    db 243
+    db 1
+    db 1
+    db 240
+    db 6
+    db 3
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK13 db 199
+    db 3
+    db 10
+    db 60
+    db 221
+    db 10
+    db 9
+    db 133
+    db 2
+    db 60
+    db 221
+    db 10
+    db 8
+    db 135
+    db 3
+    db 60
+    db 221
+    db 10
+    db 7
+    db 255
+    db 19
+    db 8
+    db 3
+    db 60
+    db 228
+    db 6
+    db 1
+    db 199
+    db 3
+    db 2
+    db 60
+    db 197
+    db 2
+    db 7
+    db 69
+    db 3
+    db 60
+    db 228
+    db 6
+    db 1
+    db 199
+    db 3
+    db 2
+    db 60
+    db 164
+    db 6
+    db 255
+    db 19
+    db 8
+    db 0
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK14 db 240
+    db 9
+    db 0
+    db 62
+    db 133
+    db 4
+    db 60
+    db 240
+    db 9
+    db 2
+    db 145
+    db 4
+    db 60
+    db 255
+    db 80
+    db 9
+    db 0
+    db 60
+    db 124
+    db 5
+    db 55
+    db 124
+    db 2
+    db 124
+    db 3
+    db 124
+    db 8
+    db 110
+    db 0
+    db 62
+    db 131
+    db 4
+    db 60
+    db 128
+    db 0
+    db 179
+    db 9
+    db 124
+    db 5
+    db 61
+    db 127
+UNTITLED_SUBSONG0_TRACK15 db 145
+    db 4
+    db 62
+    db 5
+    db 128
+    db 0
+    db 133
+    db 4
+    db 17
+    db 62
+    db 5
+    db 60
+    db 124
+    db 6
+    db 15
+    db 62
+    db 3
+    db 128
+    db 0
+    db 131
+    db 4
+    db 15
+    db 62
+    db 3
+    db 61
+    db 127
+UNTITLED_SUBSONG0_SPEEDTRACK0 db 255
+UNTITLED_SUBSONG0_EVENTTRACK0 db 255
+SOUNDEFFECTSSPACE
+MYRING1SOUND_SOUNDEFFECTS dw MYRING1SOUND_SOUNDEFFECTS_SOUND1
+MYRING1SOUND_SOUNDEFFECTS_SOUND1 db 0
+    db 61
+    db 90
+    db 0
+    db 37
+    db 115
+    db 0
+    db 61
+    db 140
+    db 0
+    db 57
+    db 133
+    db 0
+    db 53
+    db 126
     db 0
     db 49
-    db 30
+    db 119
     db 0
     db 45
-    db 30
+    db 112
+    db 0
+    db 41
+    db 105
+    db 0
+    db 37
+    db 98
     db 0
     db 33
-    db 30
+    db 91
+    db 0
+    db 29
+    db 91
     db 0
     db 25
-    db 30
+    db 91
     db 0
-    db 17
-    db 30
+    db 25
+    db 91
     db 0
-MYRING6SOUND_SOUNDEFFECTS_SOUND1_LOOP db 0
-    db 4
+    db 25
+    db 91
+    db 0
+    db 25
+    db 91
+    db 0
+    db 25
+    db 91
+    db 0
+    db 25
+    db 91
+    db 0
+    db 25
+    db 91
+    db 0
+    db 25
+    db 91
+    db 0
+    db 21
+    db 89
+    db 0
+    db 21
+    db 89
+    db 0
+    db 21
+    db 89
+    db 0
+    db 21
+    db 89
+    db 0
+    db 21
+    db 89
+    db 0
+    db 21
+    db 89
+    db 0
+MYRING1SOUND_SOUNDEFFECTS_SOUND1_LOOP db 0
+    db 12
+    dw MYRING1SOUND_SOUNDEFFECTS_SOUND1_LOOP
 PLY_AKG_START jp PLY_AKG_INIT
     jp PLY_AKG_PLAY
     jp PLY_AKG_INITTABLEJP_END
@@ -2519,6 +3232,10 @@ PLY_AKG_PERIODTABLE dw 6778
     dw 5
     dw 5
     dw 4
+PLY_AKG_PERIODTABLE_END
+PLY_AKG_END
+CHANGECURRENTSPEED ld (PLY_AKG_CURRENTSPEED),a
+    ret 
 PLY_AKG_ARPEGGIOSTABLE equ 56849
 PLY_AKG_BASENOTEINDEX equ 56834
 PLY_AKG_CHANNEL1_ARPEGGIOBASESPEED equ 56892

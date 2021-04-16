@@ -10,6 +10,8 @@ GAP:        equ  6                      ; espaço entre os canos
 VOLUME      equ 11                      ; volume da campanhia dos pontos
 MAXU:       equ 12                      ; incremento máximo para a subida
 MAXD:       equ 12                      ; incremendo maximo para a descida
+SONGREALFREQUENCY: equ 50   ; TGW INCLUIDO ;<<<<------ TROCAR AQUI DE ACORDO COM A FREQUENCIA 'REAL' QUE A MUSICA FOI PRODUZIDA  
+                            ;            (load the song in Arkos Tracker 2 and take a look at "Edit>>Song properties" menu option)
 
             call initVar                ; inicializa as variáveis
             call initEnv                ; inicializa o ambiente do jogo
@@ -671,7 +673,8 @@ gplMensaNewLine:
             call LDIRMV                 ; copio para RAM
             
             ;TGW - INCLUIDO bloco abaixo, um tempinho a mais entre cada rolada de linha:
-            ld b,(vdpCycle1)            ; ~1/10 segundo
+            ld hl, vdpCycle1
+            ld b,(hl)                   ; ~1/10 segundo
             ld hl,JIFFY
             ld (hl),0                   ; zero o temporizador
             call waitASec
@@ -707,9 +710,9 @@ gplMensaText:
             db 48+__VERSION,".",64+__RELEASE,0
             db "(c)2014-2019 by Crunchworks",0
             db 0
-            db "it and/or modify it under",0
             db "This program is free soft-",0
             db "ware; you can redistribute",0
+            db "it and/or modify it under",0
             db "the terms of the GNU Gen-",0
             db "eral Public License as",0
             db "published by the Free",0
@@ -829,6 +832,7 @@ spritePatterns:
 ;  *
 ;  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;
+adjustedSongSpeed equ ramArea-3         ; TGW incluida esta variavel                       
 flagWriteFB:  equ ramArea-2             ;TGW incluido este flag
 flagMusic:  equ ramArea-1               ;TGW incluido este flag
 birdY:      equ ramArea
@@ -856,6 +860,12 @@ initVar:
             local birdDraw
 
             xor a                       ; zero A
+ 
+            ;TGW - incluido bloco abaixo:
+            ld (adjustedSongSpeed), a
+            ld (flagWriteFB), a
+            ld (flagMusic), a
+            
 
             ld (birdY),a                ; altura do pássaro
             ld (birdFrame),a                ; frame atual do pássaro
@@ -953,7 +963,7 @@ playRing:
             ; toca um sound effect via Arkos player SEM interromper a musica
 	    ; (para alterar sound, editar no stub: stub_gera_include_arkos_para_pasmo_music*.asm) 
             ld a,1   ;sound effect number hardcoded (ver no *.asm exportado pelo Arkos)
-            ld c,1  ;Channel (0-2)  -- usaremos 1, pois nossa musica esta nos channels 0 and 2
+            ld c,1  ;Channel (0-2)  -- usaremos 1, canal B central (pode usar canal ja em uso por music)
             ld b,0  ;Full volume inicial
             call PLY_AKG_PLAYSOUNDEFFECT            
 
@@ -1686,7 +1696,8 @@ initMusicAndSound:
             ;Initializes the sound effects:
             ld hl,SOUNDEFFECTSSPACE
             call PLY_AKG_INITSOUNDEFFECTS
-            ld a, 1                    ; nossa flag 
+            call FixSongSpeed        ; <<<------- para tocar a musica a (quase) a mesma velocidade, independente se VDP/HTIMI = 50hz ou 60hz.
+            ld a, 1                    ; flag que ativa musica
             ld (flagMusic), a          ; aviso que ta liberado para tocar musica a partir de agora
             ret
             endp                    
@@ -1698,9 +1709,16 @@ playMusicAndSound:                  ; de acordo com docs do ARKOS, deve executar
             ld a, (flagMusic)       ; acabamos nao usando esse flag...serviria para dar uma pausa em music/sounds
             cp 1
             ret nz                  ; se o flagMusic for <> 1 entao retorna; NAO toca musica 
-            DI                      ; parece necessario antes do PLY_AKG_PLAY, conforme docs do ARKOS
+            ;DI                      ; avaliar melhor se necessario antes do PLY_AKG_PLAY, conforme docs do ARKOS
+            
+            ld a, (adjustedSongSpeed)
+            cp 0                     ;will be 0, if there was no need to adjust the song speed 
+            jr z, arkosPlay
+            call CHANGECURRENTSPEED  ; ; <<<------- TO PLAY THE SONG AT (almost) THE 'SAME' SPEED, REGARDLESS OF WETHER THE MACHINE HAS a 50hz or 60hz VDP.
+                                     ;              (essa rotina encontra-se no arquivo STUB, pois usa recursos proprios do RASM)
+arkosPlay: 
             call PLY_AKG_PLAY       ; toca um segmento de musica e de eventuais sounds, via player/tocador ARKOS TRAKER 2
-            EI
+            ;EI
             ret
             endp
 
@@ -1710,7 +1728,7 @@ stopMusicAndSound:
             ld a,1   ;Channel (0-2) ; deve ser feito para cada channel utilizado com sound effects
             call PLY_AKG_STOPSOUNDEFFECTFROMCHANNEL         
             call PLY_AKG_STOP       ; uma vez, finaliza musica em todos os channels     
-            ld a, 0                 ; nossa flag
+            ld a, 0                 ; nossa flag que ativa a musica
             ld (flagMusic), a       ; aviso que NAO deve mais tocar musica; isso ocorre se chegou em "gameOver"
             ret
             endp                    
@@ -1754,6 +1772,42 @@ myIntVdpHtimi:                      ;nossa rotina que vai executar na interrupca
             ret
             endp 
  
+
+
+;==TGW INCLUIDO== 
+FixSongSpeed:                   ; ajusta a velocidade da musica, conforme frequencia  VDP/HTIMI: 50hz/PAL ou 60hz/NTSC
+        ld c, 0
+        ld a,(0x002b)           ; read the MSX version and info from ROM
+        bit 7,a                 ; if bit 7 is 1, 50Hz/PAL; if 0, 60Hz/NTSC
+        jr z, cont1
+        ld c, 128               ; c=128 to indicate 50hz/PAL machine; 0 else (assuming only 50 or 60 hz used)
+cont1:  
+        ld b, 0
+        ld a, SONGREALFREQUENCY
+        cp 50
+        jr nz, cont2
+        ld b, 1                 ; b=1 to indicate song created at 50hz; 0 else (assuming only 50 or 60 hz used)
+cont2:  
+        ld a, b
+        add a, c
+tst0:   cp 0                    ;Here we have a 60hz/NTSC machine AND a song created for 60 hz
+        jr z, end_fix           ; no adjustment needed
+tst1:   cp 1                    ;Here we have a 60hz/NTSC machine AND a song created for 50 hz
+        jr nz, tst128
+        ld a, 7                 ;slow down , from 6 (default speed) to 7 in this case
+        ld (adjustedSongSpeed), a
+        jr end_fix 
+tst128: cp 128                  ;Here we have a 50hz/NTSC machine AND a song created for 60 hz
+        jr nz, tst129
+        ld a, 5                 ;speed up, from 6 (default speed) to 7 in this case
+        ld (adjustedSongSpeed), a
+        jr end_fix 
+tst129: cp 129                  ;we have a 50hz/NTSC machine AND song was created at 50 hz
+        ;jr z, end_fix         ; no adjustment needed
+end_fix:
+        ret
+
+
 
 ;==TGW INCLUIDO==
 include "include_arkos_para_pasmo.asm"  ;; <<---- este arquivo veio da conversao para o pasmo, via Disark.exe (ver tutorial 05 do ARKOS TRACKER2)
