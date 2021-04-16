@@ -9,20 +9,20 @@ The various original \*.asm files have been consolidated into one large "full_ga
 Giovanni's original comments have been retained and additional comments have been included to make the code easier to understand.
 
 ## How to build (not mandatory)
-You will need to be running MS-Windows(sorry).
+You will need to be running MS-Windows (sorry).
 
-Just download all the files and double click on one of the "build________.CMD" scripts.
+Just download all the files and double click on one of the "build______.CMD" scripts.
 
 Once compiled, those scripts will try to run [OpenMSX](http://openmsx.org/) to test the generated game, but this is optional.
 
 It's also possible to test the generated *.rom or *.dsk files with [WebMsx](https://webmsx.org/).
 
-## How to play the game
-There are pre built versions for both binary and **ROM** formats, which are the "flappy_____.rom" and "flappy_____.dsk" files.
+## How to run the game
+There are pre built versions for both binary/**DSK** and **ROM** formats, which are the "flappy_____.rom" and "flappy_____.dsk" files.
 
-It's easy to play the game with [WebMsx](https://webmsx.org/): just drag and drop one of of these files over the WebMSX screen.
+It's easy to run the game with [WebMsx](https://webmsx.org/): just drag and drop one of of these files over the WebMSX screen.
 
-When dropping, select the appropriate device: cartridge or disk-drive. If it is the disk-drive, reset the emulator after dropping).
+When dropping, select the appropriate device: cartridge or disk-drive. If it is the disk-drive, reset the emulator after dropping.
 
 
 ## Toolbox
@@ -38,11 +38,20 @@ I've used the following tools to make and test the changes in this game:
 - [WebMsx](https://webmsx.org/) to test the game built as a disk 
 - [Git](https://www.git-scm.org) to keep tracking of changes.
 
+## Licenses and updates
+This program and other related files are licensed unde terms of GPL
+(GNU General Public License). Changes, suggestions and improvement
+are welcomed.
+
+The code concerning the music player of "ARKOS PLAYER 2" is
+submitted to MIT license (https://choosealicense.com/licenses/mit/).
+
+
 Below, I kept the content of the original README, to allow a better understanding of the game that was modified.
 <br/><br/>
 
 -------------------------------
-<br/><br/>
+<br/>
 
 (original README content):
 
